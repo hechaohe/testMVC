@@ -7,7 +7,10 @@
 //
 
 #import "ViewController.h"
-
+#import "CollegeModel.h"
+#import "CollegeView.h"
+#import "Masonry.h"
+#import "SuperStarController.h"
 @interface ViewController ()
 
 @end
@@ -16,14 +19,28 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    
+    
+    CollegeView *view = [[CollegeView alloc] init];
+    view.frame = CGRectMake(0, 0, 300, 200);
+    [self.view addSubview:view];
+    
+    UIButton *btn = [UIButton buttonWithType:0];
+    [btn setTitle:@"Push" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor brownColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(20);
+        make.bottom.mas_equalTo(-20);
+        make.size.mas_equalTo(CGSizeMake(100, 30));
+    }];
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)btnAction {
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:[SuperStarController new]];
+    [self presentViewController:nav animated:YES completion:nil];
 }
-
 
 @end
