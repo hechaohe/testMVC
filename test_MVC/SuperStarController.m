@@ -53,7 +53,7 @@
     SuperStarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SuperStarCell" forIndexPath:indexPath];
     
     cell.superBlock = ^{
-        NSLog(@"qnmlgb");
+        NSLog(@"haha");
     };
     
     return cell;
